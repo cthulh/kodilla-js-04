@@ -6,8 +6,18 @@
 	*/
 
 	var showModal = function(event){
+    var targetModal = event.target.getAttribute('href');
 		event.preventDefault();
 		document.querySelector('#modal-overlay').classList.add('show');
+    for (let modal of modals) {
+      if (modal === document.querySelector(targetModal)) {
+        console.log(modal.id + ' was clicked');
+        modal.classList.add('show');
+      } else {
+        modal.classList.remove("show");
+      }
+    }
+    document.querySelector(targetModal).classList.add('show');
 	};
 
 	// Mimo, że obecnie mamy tylko jeden link, stosujemy kod dla wielu linków. W ten sposób nie będzie trzeba go zmieniać, kiedy zechcemy mieć więcej linków lub guzików otwierających modale
@@ -51,4 +61,4 @@
 	Zmień funkcję showModal tak, aby w momencie wyświetlania była zmieniana treść nagłówka na dowolną inną, np. "Modal header".
 	*/
 
-})(); 
+})();
